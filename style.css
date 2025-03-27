@@ -21,10 +21,13 @@ header {
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #ddd; /* Добавление границы снизу */
 }
 
+
+
 header .logo img {
-    height: 60px;
+    height: 150px;
     margin-bottom: 10px;
 }
 
@@ -36,16 +39,57 @@ header h1 {
     font-size: 2.5rem;
 }
 
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 15px 0;
+}
+
+nav::before,
+nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color); /* Цвет линий */
+    opacity: 0.7;
+}
+
+nav::before {
+    top: 0;
+}
+
+nav::after {
+    bottom: 0;
+}
+
 nav a {
-    color: var(--secondary-color);
-    text-decoration: none;
+    color: var(--primary-color); /* Цвет текста гиперссылки */
+    text-decoration: none; /* Убираем подчеркивание */
     margin: 0 15px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    font-weight: 500; /* Немного утончим текст */
+    font-size: 1rem; /* Размер шрифта */
+    text-transform: uppercase; /* Преобразуем в верхний регистр */
+    letter-spacing: 1px; /* Немного увеличим межбуквенный интервал */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Плавный переход */
 }
 
 nav a:hover {
-    color: var(--primary-color);
+    color: #D4AF37; /* Мягкий золотой цвет */
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); /* Мягкая тень для текста */
+}
+
+nav a:focus {
+    outline: none; /* Убираем стандартную обводку при фокусе */
+    box-shadow: 0 0 5px #D4AF37; /* Мягкая золотая обводка при фокусе */
+}
+
+nav a:active {
+    color: #D4AF37; /* Мягкий золотой цвет при нажатии */
 }
 
 #hero {
@@ -54,10 +98,27 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--text-dark);
-    background: linear-gradient(rgba(249, 249, 249, 0.8), rgba(249, 249, 249, 0.8)), url('hero-bg.jpg');
+    color: var(--text-light);
+    position: relative;
+    background: url('images/beauty-bg.jpg') no-repeat center center;
     background-size: cover;
-    background-position: center;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Сделал темнее */
+    backdrop-filter: blur(2px); /* Уменьшил размытие */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content h2 {
@@ -65,8 +126,10 @@ nav a:hover {
     font-weight: 700;
     font-size: 3.5rem;
     margin: 0;
-    opacity: 0.9; /* Больше прозрачности */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Легкая тень */
 }
+
+
 
 .hero-content p {
     font-size: 1.5rem;
@@ -87,15 +150,15 @@ nav a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
     z-index: 1000;
-    animation: glow 2s infinite alternate; /* Эффект сияния */
+    animation: glow 4s infinite alternate; /* Уменьшена интенсивность анимации */
 }
 
 @keyframes glow {
     0% {
-        box-shadow: 0 0 10px rgba(44, 62, 80, 0.7);
+        box-shadow: 0 0 10px rgba(44, 62, 80, 0.4); /* Уменьшенное свечение */
     }
     100% {
-        box-shadow: 0 0 20px rgba(44, 62, 80, 1);
+        box-shadow: 0 0 20px rgba(44, 62, 80, 0.6); /* Уменьшенное свечение */
     }
 }
 
@@ -104,12 +167,14 @@ nav a:hover {
     background-color: var(--accent-color);
 }
 
+
 .section-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
     text-align: center;
+    margin-bottom: 120px; /* Увеличил пространство между разделами */
 }
+
 
 .services-grid, .masters-grid, .gallery-grid {
     display: grid;
@@ -250,4 +315,118 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+}
+#about {
+    padding-top: 50px; /* Отступ сверху для всей секции */
+}
+
+#about h2 {
+    margin-top: 20px; /* Отступ сверху для заголовка */
+}
+#price {
+    padding: 40px 0;
+    margin-top: 60px; /* Отступ сверху */
+    text-align: center;
+}
+
+.price-link {
+    font-size: 1.8rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+.price-link:hover {
+    color: #ff6f61; /* Цвет при наведении */
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* Отступы между карточками */
+    padding: 0 10%; /* Отступ от краев экрана */
+    animation: fadeIn 1s ease-in-out; /* Анимация появления */
+}
+
+.service-category-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 450px; /* Увеличиваем высоту карточки */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInCard 1s forwards; /* Анимация появления карточек */
+}
+
+.service-category-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate; /* Отменяем слияние границ */
+    border-spacing: 10px; /* Добавляем одинаковое расстояние между строками */
+}
+
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+table td:nth-child(2) {
+    text-align: right;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInCard {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr; /* В один столбец на мобильных устройствах */
+        padding: 0 5%;
+    }
+
+    .service-category-card {
+        width: 100%;
+    }
+}
+section {
+    position: relative;
+    padding: 50px 20px;
+}
+
+section:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background-color: #ccc;
 }
