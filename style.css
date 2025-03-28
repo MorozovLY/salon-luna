@@ -259,7 +259,7 @@ nav a:active {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -418,7 +418,7 @@ table td:nth-child(2) {
     
     .service-category-card {
         max-width: 100%; /* Чтобы карточки не превышали границы экрана */
-        min-width: 100px; /* Минимальный размер */
+        min-width: auto; /* Минимальный размер */
     }
 }
 
@@ -436,4 +436,9 @@ section:not(:last-child)::after {
     width: 80%;
     height: 1px;
     background-color: #ccc;
+}
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
 }
