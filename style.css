@@ -14,6 +14,7 @@ body {
     background-color: var(--background-light);
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 header {
@@ -169,7 +170,8 @@ nav a:active {
 
 
 .section-content {
-    max-width: 1200px;
+    max-width: 100%;
+    padding: 0 10%;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 120px; /* Увеличил пространство между разделами */
@@ -407,14 +409,19 @@ table td:nth-child(2) {
 
 @media (max-width: 768px) {
     .services-container {
-        grid-template-columns: 1fr; /* В один столбец на мобильных устройствах */
-        padding: 0 5%;
+        display: grid;
+        grid-template-columns: 1fr; /* Одна колонка на мобильных устройствах */
+        gap: 20px;
+        padding: 0 10%;
+        justify-content: center; /* Выравнивание */
     }
-
+    
     .service-category-card {
-        width: 100%;
+        max-width: 100%; /* Чтобы карточки не превышали границы экрана */
+        min-width: 100px; /* Минимальный размер */
     }
 }
+
 section {
     position: relative;
     padding: 50px 20px;
